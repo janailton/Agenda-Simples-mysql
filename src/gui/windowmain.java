@@ -16,6 +16,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import agenda.Agenda;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -95,7 +98,11 @@ public class windowmain {
 		btnNewButton_1 = new JButton("Gravar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frmAgendaSimplesEm, "Função não implementada");
+				//JOptionPane.showMessageDialog(frmAgendaSimplesEm, "Função não implementada");
+				
+				Agenda agenda = new Agenda(textField.getText(), textField_1.getText(), textField_2.getText(),textField_3.getText());
+				if (agenda.Save()) JOptionPane.showMessageDialog(frmAgendaSimplesEm, "O contato foi salvo no banco de dados!");
+				else JOptionPane.showMessageDialog(frmAgendaSimplesEm, "Erro na gravação!");
 
 			
 				

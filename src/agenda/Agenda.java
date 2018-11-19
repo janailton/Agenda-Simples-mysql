@@ -1,5 +1,7 @@
 package agenda;
 
+import database.TbAgendaMysql;
+
 public class Agenda {
 	private String Nome;
 	private String Endereco;
@@ -35,6 +37,12 @@ public class Agenda {
 		Endereco = endereco;
 		Telefone = telefone;
 		Email = email;
+	}
+	
+	public boolean Save() {
+		
+		TbAgendaMysql tbagenda = new TbAgendaMysql(this);
+		return tbagenda.InsertData();
 	}
 
 

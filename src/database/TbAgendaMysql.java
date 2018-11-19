@@ -68,7 +68,7 @@ public class TbAgendaMysql {
 	
 	/*
 	 * 
-	 * Esta função gera ids válidos para salvar as informações da agenda no banco de dados
+	 * Esta função gera ids válidos para salvar as informações da agenda no banco de dados.
 	 * 
 	 */
 	

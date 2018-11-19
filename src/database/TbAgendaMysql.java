@@ -3,7 +3,10 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import agenda.Agenda;
 
 public class TbAgendaMysql {
@@ -37,7 +40,7 @@ public class TbAgendaMysql {
 	
 	public boolean InsertData() {
 		
-		int id = 0;
+		int id = getLastID();
 		String query = "INSERT INTO tb_agenda (id, ag_nome, ag_endereco, ag_telefone, ag_email) VALUES (?, ?, ?, ?,?);";
 		
         
@@ -61,6 +64,30 @@ public class TbAgendaMysql {
 	
 	public Connection getConnection() {
 		return conn;
+	}
+	
+	/*
+	 * 
+	 * Esta função gera ids válidos para salvar as informações da agenda no banco de dados
+	 * 
+	 */
+	
+	public int getLastID() {
+		int resultado = 1;
+		final String query = "SELECT * FROM tb_agenda;";
+       
+        try {
+            PreparedStatement selectStatement = conn.prepareStatement(query);
+            //selectStatement.setString(1, "%" + name + "%");
+            ResultSet resultSet = selectStatement.executeQuery();
+            while (resultSet.next()) {
+            	resultado++;
+            }
+            return resultado;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return resultado;
 	}
 
 }

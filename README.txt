@@ -1,0 +1,1 @@
+Esse projeto trata-se de uma simples agenda. Estou fazendo apenas para testar o acesso ao banco de dados mysql.
